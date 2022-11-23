@@ -6,12 +6,13 @@ import Header from "../../components/Header";
 import { Container } from "./style";
 interface IProps {
   children?: ReactNode;
+  text?: string;
 }
 
-const DefaultPage = ({ children }: IProps) => {
+const DefaultPage = ({ children, text }: IProps) => {
   return (
     <>
-      <Header />
+      <Header text={text} />
       <Container>
         <img src={navio1} alt="Navio 1" className="navio1" />
         {children}

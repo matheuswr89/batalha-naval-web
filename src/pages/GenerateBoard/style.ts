@@ -4,18 +4,6 @@ import DefaultPage from "../_DefaultPage";
 
 export const Container = styled(DefaultPage)``;
 
-export const DivWhite = styled.div`
-  background-color: #fff;
-  max-width: 1300px;
-  border-radius: 10px;
-  padding: 30px;
-  min-width: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const Map = styled.div`
   display: flex;
   flex-direction: row;

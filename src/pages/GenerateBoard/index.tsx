@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Board from "../../components/Board";
 import ButtonDefault from "../../components/ButtonDefault";
+import DivWhite from "../../components/DivWhite";
 import Square from "../../components/Square";
 import colors from "../../styles/colors";
 import {
@@ -9,7 +10,6 @@ import {
   ContainerButtons,
   Div,
   DivInverse,
-  DivWhite,
   Flex,
   FlexInverse,
   Map,
@@ -66,7 +66,7 @@ const GenerateBoard = () => {
   };
 
   const goNewGame = () => {
-    navigate("/game", { state: { nickname } });
+    navigate("/game", { state: { nickname, board: board[indice] } });
   };
 
   return (
