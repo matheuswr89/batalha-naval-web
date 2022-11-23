@@ -1,5 +1,6 @@
 import colors from "../../styles/colors";
-import { BoardTable, Square, TD, Text } from "./style";
+import Square from "../Square";
+import { BoardTable, TD, Text } from "./style";
 
 interface BoardProps {
   matriz: string[][];
@@ -20,6 +21,7 @@ const Board = ({ matriz }: BoardProps) => {
                 {i === 0 && <Text>{letters[j]}</Text>}
                 <Square
                   backgroudColor={lin === "0" ? colors.blueMap : colors.default}
+                  letter={lin !== "0" ? lin : undefined}
                 />
               </td>
             ))}

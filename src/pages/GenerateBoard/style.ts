@@ -8,7 +8,7 @@ export const DivWhite = styled.div`
   background-color: #fff;
   max-width: 1300px;
   border-radius: 10px;
-  padding: 10px;
+  padding: 30px;
   min-width: 250px;
   display: flex;
   flex-direction: column;
@@ -16,39 +16,21 @@ export const DivWhite = styled.div`
   align-items: center;
 `;
 
-export const Button = styled.button`
-  width: 250px;
-  height: 50px;
-  border-radius: 55px;
-  background: ${colors.blue};
-  border: 3px solid ${colors.default};
-  font-weight: 400;
-  font-size: 26px;
-  color: ${colors.default};
-  cursor: pointer;
-  @media screen and (max-width: 450px) {
-    width: 150px;
-    height: 40px;
-    font-size: 15px;
-  }
-  transition: 0.2s ease-in;
-  &:hover {
-    filter: brightness(0.8);
-  }
-`;
-
 export const Map = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
+  padding: 10px;
 `;
 
 export const Div = styled.div`
   display: flex;
   flex-direction: column;
-  width: 450px;
+  width: 570px;
+  align-self: flex-end;
+  margin-top: 15px;
   @media screen and (max-width: 950px) {
     margin-top: 20px;
   }
@@ -108,4 +90,12 @@ export const Span = styled.span`
 export const DivInverse = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const ContainerButtons = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 `;

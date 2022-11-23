@@ -17,7 +17,7 @@ export const Input = styled.input`
   border-radius: 22px;
   border: none;
   background: #dff6ff;
-  font-size: 28px;
+  font-size: 24px;
   @media screen and (max-width: 450px) {
     width: 100%;
     height: 55px;
@@ -30,14 +30,15 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  width: 424px;
-  height: 75px;
+  width: 739px;
+  height: 100px;
   border-radius: 55px;
   background: ${colors.blue};
   border: 3px solid ${colors.default};
   font-weight: 400;
-  font-size: 26px;
+  font-size: 36px;
   color: ${colors.default};
+  margin-top: 50px;
   cursor: pointer;
   @media screen and (max-width: 450px) {
     width: 100%;
