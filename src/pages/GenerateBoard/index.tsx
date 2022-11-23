@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Board from "../../components/Board";
-import { Square } from "../../components/Board/style";
+import ButtonDefault from "../../components/ButtonDefault";
+import Square from "../../components/Square";
 import colors from "../../styles/colors";
 import {
-  Button,
   Container,
+  ContainerButtons,
   Div,
   DivInverse,
   DivWhite,
@@ -20,6 +21,7 @@ const GenerateBoard = () => {
   const { state } = useLocation();
   const { nickname } = state;
   const [indice, setIndice] = useState(0);
+  const navigate = useNavigate();
   const board = [
     [
       ["0", "0", "0", "0", "0", "0", "0", "A", "A", "A"],
@@ -63,61 +65,135 @@ const GenerateBoard = () => {
     setIndice(Math.floor(Math.random() * board.length));
   };
 
+  const goNewGame = () => {
+    navigate("/game", { state: { nickname } });
+  };
+
   return (
     <Container>
       <DivWhite>
-        <Button onClick={() => getNewMap()}>Gerar novo mapa</Button>
         <Map>
           <Board matriz={board[indice]} clickable={false} />
           <Div>
             <Span>
               <DivInverse>
                 <Flex>
-                  <Square backgroudColor={colors.default} margin="2px" />
-                  <Square backgroudColor={colors.default} margin="2px" />
-                  <Square backgroudColor={colors.default} margin="2px" />
+                  <Square
+                    backgroudColor={colors.default}
+                    margin="2px"
+                    letter="P"
+                  />
+                  <Square
+                    backgroudColor={colors.default}
+                    margin="2px"
+                    letter="P"
+                  />
+                  <Square
+                    backgroudColor={colors.default}
+                    margin="2px"
+                    letter="P"
+                  />
                 </Flex>
                 <FlexInverse>
-                  <Square backgroudColor={colors.default} margin="2px" />
-                  <Square backgroudColor={colors.default} margin="2px" />
+                  <Square
+                    backgroudColor={colors.default}
+                    margin="2px"
+                    letter="P"
+                  />
+                  <Square
+                    backgroudColor={colors.default}
+                    margin="2px"
+                    letter="P"
+                  />
                 </FlexInverse>
               </DivInverse>
-              <Text>1x contratorpedeiro</Text>
+              <Text>1x porta-aviões</Text>
             </Span>
 
             <Span>
               <Flex>
-                <Square backgroudColor={colors.default} margin="2px" />
-                <Square backgroudColor={colors.default} margin="2px" />
-                <Square backgroudColor={colors.default} margin="2px" />
-                <Square backgroudColor={colors.default} margin="2px" />
+                <Square
+                  backgroudColor={colors.default}
+                  margin="2px"
+                  letter="C"
+                />
+                <Square
+                  backgroudColor={colors.default}
+                  margin="2px"
+                  letter="C"
+                />
+                <Square
+                  backgroudColor={colors.default}
+                  margin="2px"
+                  letter="C"
+                />
+                <Square
+                  backgroudColor={colors.default}
+                  margin="2px"
+                  letter="C"
+                />
               </Flex>
               <Text>1x contratorpedeiro</Text>
             </Span>
 
             <Span>
               <Flex>
-                <Square backgroudColor={colors.default} margin="2px" />
-                <Square backgroudColor={colors.default} margin="2px" />
-                <Square backgroudColor={colors.default} margin="2px" />
+                <Square
+                  backgroudColor={colors.default}
+                  margin="2px"
+                  letter="z"
+                />
+                <Square
+                  backgroudColor={colors.default}
+                  margin="2px"
+                  letter="z"
+                />
+                <Square
+                  backgroudColor={colors.default}
+                  margin="2px"
+                  letter="z"
+                />
               </Flex>
               <Text>1x cruzador</Text>
             </Span>
 
             <Span>
               <Flex>
-                <Square backgroudColor={colors.default} margin="2px" />
-                <Square backgroudColor={colors.default} margin="2px" />
+                <Square
+                  backgroudColor={colors.default}
+                  margin="2px"
+                  letter="r"
+                />
+                <Square
+                  backgroudColor={colors.default}
+                  margin="2px"
+                  letter="r"
+                />
               </Flex>
               <Text>2x rebocador</Text>
             </Span>
 
             <Span>
               <Flex>
-                <Square backgroudColor={colors.default} margin="2px" />
+                <Square
+                  backgroudColor={colors.default}
+                  margin="2px"
+                  letter="s"
+                />
               </Flex>
               <Text>2x submarino</Text>
             </Span>
+            <ContainerButtons>
+              <ButtonDefault
+                onClick={() => getNewMap()}
+                text="Gerar novo mapa"
+              />
+              <ButtonDefault
+                onClick={() => goNewGame()}
+                text="Ir para partida"
+                typeButton="secondary"
+              />
+            </ContainerButtons>
           </Div>
         </Map>
       </DivWhite>
