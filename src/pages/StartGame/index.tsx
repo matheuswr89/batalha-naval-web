@@ -1,5 +1,9 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Board from "../../components/Board";
+import BoardAdversary from "../../components/BoardAdversary";
+import ButtonDefault from "../../components/ButtonDefault";
+import Chat from "../../components/Chat";
 import DivWhite from "../../components/DivWhite";
 import Square from "../../components/Square";
 import colors from "../../styles/colors";
@@ -15,25 +19,36 @@ import {
   ContainerAllFields,
   ContainerBattleField,
   ContainerInfo,
+  ContainerPlayerTurn,
+  OtherContainer,
 } from "./style";
 
 const StartGame = () => {
   const { state } = useLocation();
+  const [myTurn, setMyTurn] = useState<boolean>(false);
   const { nickname, board } = state;
 
-  console.log("Board", board);
+  useEffect(() => {
+    setMyTurn(false);
+  }, []);
+
   return (
     <DefaultPage text={`${nickname} 3 x 2 RUANITO`}>
       <DivWhite>
         <ContainerAllFields>
           <ContainerBattleField>
-            <Board matriz={board} clickable={false} />
+            <BoardAdversary matriz={board} clickable={false} />
           </ContainerBattleField>
           <ContainerBattleField>
             <Board matriz={board} clickable={false} />
           </ContainerBattleField>
         </ContainerAllFields>
         <ContainerInfo>
+          <ContainerPlayerTurn isPlayerTurn={myTurn}>
+            <div className="playerTurn" />
+            <span>{myTurn ? "SUA VEZ DE JOGAR" : "VEZ DO OPONENTE"}</span>
+          </ContainerPlayerTurn>
+
           <div>
             <Span>
               <Flex>
@@ -146,6 +161,14 @@ const StartGame = () => {
           </div>
         </ContainerInfo>
       </DivWhite>
+      <OtherContainer>
+        <Chat />
+        <ButtonDefault
+          onClick={() => {}}
+          text="Sair da partida"
+          typeButton="primary"
+        />
+      </OtherContainer>
     </DefaultPage>
   );
 };
