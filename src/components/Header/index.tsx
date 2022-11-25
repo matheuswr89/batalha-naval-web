@@ -1,12 +1,16 @@
 import logo from "../../assets/icon.png";
 import { Container, ContainerTexts, Image, Link } from "./style";
 
-const Header = () => {
+interface IProps {
+  text?: string;
+}
+
+const Header = ({ text }: IProps) => {
   return (
     <Container>
       <ContainerTexts>
         <Image src={logo} />
-        <Link href="/">Batalha Naval</Link>
+        <Link href="/">{text ? text : "Batalha Naval"}</Link>
       </ContainerTexts>
     </Container>
   );
