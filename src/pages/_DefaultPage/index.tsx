@@ -13,11 +13,9 @@ const DefaultPage = ({ children, text }: IProps) => {
   return (
     <>
       <Header text={text} />
-      <Container>
-        <img src={navio1} alt="Navio 1" className="navio1" />
-        {children}
-        <img src={navio2} alt="Navio 2" className="navio2" />
-      </Container>
+      <img src={navio1} alt="Navio 1" className="navio1" />
+      <Container>{children}</Container>
+      <img src={navio2} alt="Navio 2" className="navio2" />
     </>
   );
 };

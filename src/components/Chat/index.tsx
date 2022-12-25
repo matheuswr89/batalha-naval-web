@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { ChatBody, ContainerChat, FieldText, Message } from "./style";
+import { useEffect, useState } from "react";
 import { MdSend } from "react-icons/md";
+import { ChatBody, ContainerChat, FieldText, Message } from "./style";
 
 interface IMessage {
   id: number;
@@ -13,7 +13,7 @@ const Chat = () => {
   const [messageChat, setMessageChat] = useState<Array<IMessage>>(
     [] as Array<IMessage>
   );
-
+  let key = 0;
   useEffect(() => {
     setMessageChat([
       {
@@ -42,7 +42,7 @@ const Chat = () => {
       <h1>CHAT</h1>
       <ChatBody>
         {messageChat.map((message: IMessage) => (
-          <Message myMessage={message.myMessage}>
+          <Message myMessage={message.myMessage} key={++key}>
             <span>{message.message}</span>
           </Message>
         ))}

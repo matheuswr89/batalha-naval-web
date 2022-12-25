@@ -40,7 +40,7 @@ export const Button = styled.button`
   color: ${colors.default};
   margin-top: 50px;
   cursor: pointer;
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 753px) {
     width: 100%;
     height: 55px;
     font-size: 15px;

@@ -1,15 +1,18 @@
 import { useNavigate } from "react-router-dom";
+import uuid from "react-uuid";
 import { Button, Container, Input, Text } from "./style";
-
-const Home = () => {
+const Home = ({ socket }: any) => {
   const navigate = useNavigate();
+
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const nickname: string = e.target.nickname.value;
-    if (nickname.trim().length > 0) {
-      navigate("/board", { state: { nickname } });
+    const user: string = e.target.nickname.value;
+    if (user.trim().length > 0) {
+      socket.emit("join", { user, room: uuid() });
+      navigate("/loading", { state: { user } });
     } else alert("Forneça um nickname");
   };
+
   return (
     <Container>
       <form onSubmit={handleSubmit}>

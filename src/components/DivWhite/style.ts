@@ -3,11 +3,15 @@ import styled from "styled-components";
 export const DivWhiteContainer = styled.div`
   background-color: #fff;
   max-width: 1300px;
+  min-width: 300px;
   border-radius: 10px;
-  padding: 30px;
-  min-width: 250px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @media screen and (max-width: 1040px) {
+    max-width: 550px;
+  }
+  @media screen and (max-width: 320px) {
+    padding: 1px;
+  }
 `;

@@ -17,7 +17,7 @@ export const Container = styled.button<IProps>`
   font-size: 26px;
   color: ${(props) => (props.primaryButton ? colors.default : colors.white)};
   cursor: pointer;
-  margin: 20px auto 0;
+  margin: 10px auto 0;
   @media screen and (max-width: 450px) {
     width: 150px;
     height: 40px;

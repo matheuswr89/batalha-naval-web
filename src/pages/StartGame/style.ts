@@ -2,11 +2,18 @@ import styled from "styled-components";
 import colors from "../../styles/colors";
 
 export const ContainerAllFields = styled.div`
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+`;
+
+export const DivStartGame = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ContainerBattleField = styled.div`
@@ -22,8 +29,7 @@ export const ContainerInfo = styled.div`
 
 export const ContainerPlayerTurn = styled.div<{ isPlayerTurn: boolean }>`
   display: flex;
-  width: 100%;
-  margin: 0px 20px 15px;
+  margin: 20px 0;
   align-items: center;
 
   .playerTurn {
@@ -45,5 +51,8 @@ export const OtherContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-left: 30px;
+  margin-left: 15px;
+  @media screen and (max-width: 894px) {
+    margin-left: 0;
+  }
 `;

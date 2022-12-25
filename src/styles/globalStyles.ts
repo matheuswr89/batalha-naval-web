@@ -15,7 +15,6 @@ export default createGlobalStyle`
   }
 
   body {
-    min-height: 100vh;
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
@@ -41,10 +40,6 @@ export default createGlobalStyle`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  }
-
-  form button {
-    margin-top: 10px;
   }
 
   .number0{

@@ -5,8 +5,8 @@ import ButtonDefault from "../../components/ButtonDefault";
 import DivWhite from "../../components/DivWhite";
 import Square from "../../components/Square";
 import colors from "../../styles/colors";
+import DefaultPage from "../_DefaultPage";
 import {
-  Container,
   ContainerButtons,
   Div,
   DivInverse,
@@ -17,11 +17,11 @@ import {
   Text,
 } from "./style";
 
-const GenerateBoard = () => {
-  const { state } = useLocation();
-  const { nickname } = state;
-  const [indice, setIndice] = useState(0);
+const GenerateBoard = ({ socket }: any) => {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const { user, room } = state;
+  const [indice, setIndice] = useState(0);
   const board = [
     [
       ["0", "0", "0", "0", "0", "0", "0", "A", "A", "A"],
@@ -66,11 +66,13 @@ const GenerateBoard = () => {
   };
 
   const goNewGame = () => {
-    navigate("/game", { state: { nickname, board: board[indice] } });
+    console.log(room);
+    socket.emit("board", { room, user, board: board[indice] });
+    navigate("/game", { state: { user, board: board[indice] } });
   };
 
   return (
-    <Container>
+    <DefaultPage>
       <DivWhite>
         <Map>
           <Board matriz={board[indice]} clickable={false} />
@@ -197,7 +199,7 @@ const GenerateBoard = () => {
           </Div>
         </Map>
       </DivWhite>
-    </Container>
+    </DefaultPage>
   );
 };
 

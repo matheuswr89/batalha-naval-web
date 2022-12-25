@@ -15,6 +15,10 @@ export const ContainerChat = styled.div`
   h1 {
     font-size: 48px;
   }
+
+  @media screen and (max-width: 358px) {
+    width: 300px;
+  }
 `;
 
 export const ChatBody = styled.div`

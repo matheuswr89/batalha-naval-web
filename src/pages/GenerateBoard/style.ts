@@ -10,25 +10,21 @@ export const Map = styled.div`
   align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  padding: 10px;
+  padding: 1vw;
 `;
 
 export const Div = styled.div`
   display: flex;
   flex-direction: column;
-  width: 570px;
   align-self: flex-end;
-  margin-top: 15px;
-  @media screen and (max-width: 950px) {
-    margin-top: 20px;
-  }
+  margin-left: 15px;
 `;
 
 export const Flex = styled.div`
   display: flex;
   flex-direction: row;
   margin-left: 48px;
-  width: 200px;
+  width: 160px;
   align-items: center;
   @media screen and (max-width: 456px) {
     margin-top: 20px;
@@ -55,7 +51,7 @@ export const FlexInverse = styled.div`
     margin-left: 32%;
   }
   @media screen and (min-width: 511px) {
-    margin-left: 39%;
+    margin-left: 46%;
   }
 `;
 
