@@ -33,10 +33,27 @@ export const Flex = styled.div`
     margin-right: 10px;
   }
 `;
+
+export const OtherFlex1 = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-left: 28px;
+  width: 110px;
+  align-items: center;
+  @media screen and (min-width: 1366px) {
+    width: 160px;
+  }
+  @media screen and (max-width: 456px) {
+    margin-top: 20px;
+    width: 120px;
+    margin-left: 18px;
+    margin-right: 10px;
+  }
+`;
 export const OtherFlex = styled.div`
   display: flex;
   flex-direction: row;
-  width: 90px;
+  width: 95px;
   align-items: center;
   @media screen and (max-width: 456px) {
     margin-top: 20px;
@@ -49,12 +66,14 @@ export const OtherFlex = styled.div`
 export const FlexInverse = styled.div`
   display: flex;
   flex-direction: column;
-  @media screen and (max-width: 1366px) {
-    margin-left: 35%;
+  @media screen and (min-width: 1366px) {
+    margin-left: 40%;
   }
-
+  @media screen and (max-width: 1366px) {
+    margin-left: 36%;
+  }
   @media screen and (max-width: 510px) {
-    margin-left: 35%;
+    margin-left: 30%;
   }
   @media screen and (max-width: 456px) {
     margin-left: 39%;
@@ -65,8 +84,28 @@ export const FlexInverse = styled.div`
   @media screen and (max-width: 355px) {
     margin-left: 32%;
   }
-  @media screen and (min-width: 511px) {
+`;
+
+export const OtherFlexInverse = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 1366px) {
+    margin-left: 40%;
+  }
+  @media screen and (max-width: 1366px) {
     margin-left: 46%;
+  }
+  @media screen and (max-width: 510px) {
+    margin-left: 46%;
+  }
+  @media screen and (max-width: 456px) {
+    margin-left: 39%;
+  }
+  @media screen and (max-width: 413px) {
+    margin-left: 35%;
+  }
+  @media screen and (max-width: 355px) {
+    margin-left: 32%;
   }
 `;
 
