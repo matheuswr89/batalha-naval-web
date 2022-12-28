@@ -31,9 +31,13 @@ export const SquareContainer = styled.div<SquareProps>`
     `};
 
   cursor: crosshair;
-  @media screen and (max-width: 510px) {
+
+  @media screen and (max-width: 1366px) {
     width: 35px;
     height: 35px;
+    span {
+      font-size: 30px;
+    }
   }
 
   @media screen and (max-width: 412px) {

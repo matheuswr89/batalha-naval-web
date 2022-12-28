@@ -14,11 +14,10 @@ export const DivImg = styled.div`
   padding: 10px;
   display: flex;
   justify-content: center;
-
   p {
     position: absolute;
     padding: 20px;
-    font-size: 30px;
+    font-size: 25px;
   }
 
   img {

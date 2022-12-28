@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Board from "../../components/Board";
 import BoardAdversary from "../../components/BoardAdversary";
 import ButtonDefault from "../../components/ButtonDefault";
@@ -7,10 +7,12 @@ import Chat from "../../components/Chat";
 import DivWhite from "../../components/DivWhite";
 import Square from "../../components/Square";
 import colors from "../../styles/colors";
+import { defaultBoard } from "../GenerateBoard";
 import {
   DivInverse,
   Flex,
   FlexInverse,
+  OtherFlex,
   Span,
   Text,
 } from "../GenerateBoard/style";
@@ -25,16 +27,36 @@ import {
 } from "./style";
 
 const StartGame = ({ socket }: any) => {
-  const [adversario, setAdversario] = useState("");
+  const navigate = useNavigate();
   const { state } = useLocation();
+  const { user, board, id, room } = state;
+  const [adversario, setAdversario] = useState("");
+  const [boardAdversario, setBoardAdversario] = useState(defaultBoard);
+  const [myBoard, setMyBoard] = useState(defaultBoard);
   const [myTurn, setMyTurn] = useState<boolean>(false);
-  const { user, board } = state;
 
-  socket.on("send_board", (resp: any) => {
-    if (resp["jogador1"] !== user) setAdversario(resp["jogador1"]);
-    else setAdversario(resp["jogador2"]);
+  socket.on("get_board", (resp: any) => {
+    if (resp.jogador1.id === id) {
+      setAdversario(resp.jogador2.name);
+      setBoardAdversario(resp.jogador2.board);
+    } else {
+      setAdversario(resp.jogador1.name);
+      setBoardAdversario(resp.jogador1.board);
+    }
+    setMyBoard(board);
   });
-
+  socket.on("send_board", (resp: any) => {
+    if (resp.jogador1.id === id) {
+      setBoardAdversario(resp.jogador2.board);
+      setMyBoard(resp.jogador1.board);
+    } else {
+      setBoardAdversario(resp.jogador1.board);
+      setMyBoard(resp.jogador2.board);
+    }
+  });
+  socket.on("disconected", () => {
+    navigate("/loading", { state: { user } });
+  });
   useEffect(() => {
     setMyTurn(false);
   }, []);
@@ -45,10 +67,15 @@ const StartGame = ({ socket }: any) => {
         <DivWhite>
           <ContainerAllFields>
             <ContainerBattleField key={0}>
-              <BoardAdversary matriz={board} clickable={false} />
+              <BoardAdversary
+                matriz={boardAdversario}
+                room={room}
+                socket={socket}
+                id={id}
+              />
             </ContainerBattleField>
             <ContainerBattleField key={1}>
-              <Board matriz={board} clickable={false} />
+              <Board matriz={myBoard} />
             </ContainerBattleField>
           </ContainerAllFields>
           <ContainerPlayerTurn isPlayerTurn={myTurn}>
@@ -58,7 +85,7 @@ const StartGame = ({ socket }: any) => {
           <ContainerInfo>
             <div>
               <Span>
-                <Flex>
+                <OtherFlex>
                   <Square
                     backgroudColor={colors.default}
                     margin="2px"
@@ -69,17 +96,17 @@ const StartGame = ({ socket }: any) => {
                     margin="2px"
                     letter="r"
                   />
-                </Flex>
+                </OtherFlex>
                 <Text>2x rebocador</Text>
               </Span>
               <Span>
-                <Flex>
+                <OtherFlex>
                   <Square
                     backgroudColor={colors.default}
                     margin="2px"
                     letter="s"
                   />
-                </Flex>
+                </OtherFlex>
                 <Text>2x submarino</Text>
               </Span>
             </div>

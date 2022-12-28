@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Board from "../../components/Board";
 import ButtonDefault from "../../components/ButtonDefault";
@@ -17,65 +17,56 @@ import {
   Text,
 } from "./style";
 
+export const defaultBoard = [
+  ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+  ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+  ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+  ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+  ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+  ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+  ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+  ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+  ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+  ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
+];
+
 const GenerateBoard = ({ socket }: any) => {
+  const [board, setBoard]: any = useState(defaultBoard);
   const navigate = useNavigate();
   const { state } = useLocation();
-  const { user, room } = state;
-  const [indice, setIndice] = useState(0);
-  const board = [
-    [
-      ["0", "0", "0", "0", "0", "0", "0", "A", "A", "A"],
-      ["D", "D", "D", "0", "0", "0", "0", "0", "A", "S"],
-      ["0", "0", "0", "0", "0", "0", "0", "0", "A", "0"],
-      ["0", "0", "0", "0", "F", "F", "0", "0", "0", "0"],
-      ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-      ["0", "C", "C", "C", "C", "0", "0", "0", "0", "0"],
-      ["S", "F", "F", "0", "0", "0", "0", "0", "0", "0"],
-      ["0", "0", "0", "0", "0", "0", "0", "0", "0", "S"],
-      ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-      ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-    ],
-    [
-      ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-      ["0", "0", "0", "0", "0", "S", "0", "0", "0", "0"],
-      ["F", "F", "0", "0", "0", "0", "0", "0", "0", "0"],
-      ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-      ["S", "0", "0", "A", "A", "A", "0", "0", "0", "0"],
-      ["0", "0", "0", "0", "A", "0", "0", "0", "0", "0"],
-      ["0", "0", "0", "0", "A", "0", "0", "0", "F", "F"],
-      ["0", "0", "0", "D", "D", "D", "0", "0", "0", "S"],
-      ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-      ["0", "C", "C", "C", "C", "0", "0", "0", "0", "0"],
-    ],
-    [
-      ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-      ["0", "0", "0", "0", "0", "0", "D", "D", "D", "0"],
-      ["F", "F", "0", "0", "0", "0", "0", "0", "0", "0"],
-      ["C", "C", "C", "C", "0", "0", "0", "0", "0", "0"],
-      ["0", "0", "0", "A", "A", "A", "0", "0", "0", "0"],
-      ["0", "0", "0", "0", "A", "0", "0", "0", "0", "0"],
-      ["F", "F", "0", "0", "A", "0", "0", "0", "0", "0"],
-      ["0", "0", "S", "0", "0", "0", "0", "0", "0", "0"],
-      ["S", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-      ["0", "S", "0", "0", "0", "0", "0", "0", "0", "0"],
-    ],
-  ];
+  const { user, room, id } = state;
+  const message = "Esperando o adversario escolher o mapa dele...";
+
+  useEffect(() => getNewMap(), []);
 
   const getNewMap = () => {
-    setIndice(Math.floor(Math.random() * board.length));
+    socket.emit("generate_board", { room, user, id });
+    socket.on("resp_gen_board", (resp: any) => {
+      if (resp.id === id) setBoard(resp.board);
+    });
   };
 
   const goNewGame = () => {
-    console.log(room);
-    socket.emit("board", { room, user, board: board[indice] });
-    navigate("/game", { state: { user, board: board[indice] } });
+    socket.emit("board", { room, user, board, id });
+    socket.on("send_board", (resp: any) => {
+      if (
+        resp.jogador1.board !== undefined &&
+        resp.jogador2.board !== undefined
+      )
+        navigate("/game", { state: { user, board, id, room } });
+      else if (board !== defaultBoard)
+        navigate("/loading", { state: { user, board, id, message, room } });
+    });
   };
 
+  socket.on("disconected", () => {
+    navigate("/loading", { state: { user } });
+  });
   return (
     <DefaultPage>
       <DivWhite>
         <Map>
-          <Board matriz={board[indice]} clickable={false} />
+          <Board matriz={board} />
           <Div>
             <Span>
               <DivInverse>

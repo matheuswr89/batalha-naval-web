@@ -8,16 +8,15 @@ export const ContainerChat = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
-  width: 350px;
+  max-width: 450px !important;
+  width: 100%;
   height: 695px;
   border-radius: 10px;
-
+  @media screen and (max-width: 1366px) {
+    height: 450px;
+  }
   h1 {
     font-size: 48px;
-  }
-
-  @media screen and (max-width: 358px) {
-    width: 300px;
   }
 `;
 

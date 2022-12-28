@@ -4,7 +4,6 @@ import { BoardTable, TD, Text } from "./style";
 
 interface BoardProps {
   matriz: string[][];
-  clickable: boolean;
 }
 
 const Board = ({ matriz }: BoardProps) => {

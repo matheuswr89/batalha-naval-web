@@ -5,11 +5,12 @@ const Home = ({ socket }: any) => {
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    const room = uuid();
     e.preventDefault();
     const user: string = e.target.nickname.value;
     if (user.trim().length > 0) {
-      socket.emit("join", { user, room: uuid() });
-      navigate("/loading", { state: { user } });
+      socket.emit("join", { user, room });
+      navigate("/loading", { state: { user, room } });
     } else alert("Forneça um nickname");
   };
 

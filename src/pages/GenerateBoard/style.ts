@@ -23,8 +23,20 @@ export const Div = styled.div`
 export const Flex = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: 48px;
+  margin-left: 28px;
   width: 160px;
+  align-items: center;
+  @media screen and (max-width: 456px) {
+    margin-top: 20px;
+    width: 120px;
+    margin-left: 18px;
+    margin-right: 10px;
+  }
+`;
+export const OtherFlex = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 90px;
   align-items: center;
   @media screen and (max-width: 456px) {
     margin-top: 20px;
@@ -37,6 +49,9 @@ export const Flex = styled.div`
 export const FlexInverse = styled.div`
   display: flex;
   flex-direction: column;
+  @media screen and (max-width: 1366px) {
+    margin-left: 35%;
+  }
 
   @media screen and (max-width: 510px) {
     margin-left: 35%;

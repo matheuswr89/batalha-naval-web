@@ -4,10 +4,12 @@ import { BoardTable, TD, Text } from "./style";
 
 interface BoardProps {
   matriz: string[][];
-  clickable: boolean;
+  socket: any;
+  room: string;
+  id: string;
 }
 
-const BoardAdversary = ({ matriz }: BoardProps) => {
+const BoardAdversary = ({ matriz, socket, room, id }: BoardProps) => {
   let key = 0;
   const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
   return (
@@ -19,7 +21,16 @@ const BoardAdversary = ({ matriz }: BoardProps) => {
             {col.map((lin, j) => (
               <td key={key++}>
                 {i === 0 && <Text>{letters[j]}</Text>}
-                <Square backgroudColor={colors.default} isAdversary={true} />
+                <Square
+                  backgroudColor={colors.default}
+                  isAdversary={true}
+                  letter={lin}
+                  x={i}
+                  y={j}
+                  id={id}
+                  room={room}
+                  socket={socket}
+                />
               </td>
             ))}
           </tr>

@@ -7,7 +7,8 @@ export default createGlobalStyle`
     padding: 0;
     outline: 0;
     box-sizing: border-box;
-    font-family: 'Koulen', sans-serif;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    text-transform: uppercase;
   }
   *::before,
   *::after {

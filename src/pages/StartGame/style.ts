@@ -17,8 +17,7 @@ export const DivStartGame = styled.div`
 `;
 
 export const ContainerBattleField = styled.div`
-  flex: 1;
-  padding: 10px;
+  padding: 1.5vw;
 `;
 
 export const ContainerInfo = styled.div`
@@ -29,7 +28,7 @@ export const ContainerInfo = styled.div`
 
 export const ContainerPlayerTurn = styled.div<{ isPlayerTurn: boolean }>`
   display: flex;
-  margin: 20px 0;
+  margin-bottom: 1.5vw;
   align-items: center;
 
   .playerTurn {
