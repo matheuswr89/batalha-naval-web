@@ -61,4 +61,31 @@ export default createGlobalStyle`
     bottom: 0;
     right: 0;
   }
+  .hover-icon {
+    color: black;
+    
+  }
+  .hover-icon:hover {
+    color: ${colors.blueMap};
+  }
+  /* width */
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 `;

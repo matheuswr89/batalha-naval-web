@@ -15,6 +15,7 @@ interface SquareProps {
   socket?: any;
   room?: string;
   id?: string;
+  turn?: boolean;
 }
 
 const Square: React.FC<SquareProps> = ({
@@ -27,13 +28,16 @@ const Square: React.FC<SquareProps> = ({
   socket,
   room,
   id,
+  turn,
 }) => {
   const [clicou, setClicou] = useState(false);
   const enviaPosicao = () => {
-    if (x >= 0 && y >= 0) {
-      if (!clicou) {
-        setClicou(!clicou);
-        socket.emit("alter_board", { room, x, y, id });
+    if (turn) {
+      if (x >= 0 && y >= 0) {
+        if (!clicou) {
+          setClicou(!clicou);
+          socket.emit("alter_board", { room, x, y, id });
+        }
       }
     }
   };

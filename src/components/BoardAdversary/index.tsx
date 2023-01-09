@@ -7,9 +7,10 @@ interface BoardProps {
   socket: any;
   room: string;
   id: string;
+  turn: boolean;
 }
 
-const BoardAdversary = ({ matriz, socket, room, id }: BoardProps) => {
+const BoardAdversary = ({ matriz, socket, room, id, turn }: BoardProps) => {
   let key = 0;
   const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
   return (
@@ -30,6 +31,7 @@ const BoardAdversary = ({ matriz, socket, room, id }: BoardProps) => {
                   id={id}
                   room={room}
                   socket={socket}
+                  turn={turn}
                 />
               </td>
             ))}

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import useSound from "use-sound";
+import hitSound from "../../assets/hit.mp3";
+import missSound from "../../assets/miss.mp3";
 import Board from "../../components/Board";
 import BoardAdversary from "../../components/BoardAdversary";
 import ButtonDefault from "../../components/ButtonDefault";
@@ -26,7 +29,6 @@ import {
   DivStartGame,
   OtherContainer,
 } from "./style";
-
 const StartGame = ({ socket }: any) => {
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -38,11 +40,16 @@ const StartGame = ({ socket }: any) => {
   const [placarAdversario, setPlacarAdversario] = useState(0);
   const [myBoard, setMyBoard] = useState(defaultBoard);
   const [myTurn, setMyTurn] = useState<boolean>(false);
+  const [sair, setSair] = useState(false);
+  const [playHitSound] = useSound(hitSound);
+  const [playMissSound] = useSound(missSound);
 
   socket.on("get_board", (resp: any) => {
     if (resp.jogador1.id === id) {
+      setMyTurn(resp.jogador1.myturn);
       setBoardAdversario(resp.jogador2.board);
     } else {
+      setMyTurn(resp.jogador2.myturn);
       setBoardAdversario(resp.jogador1.board);
     }
     setPlacar(resp.jogador1.placar);
@@ -55,22 +62,31 @@ const StartGame = ({ socket }: any) => {
     if (resp.jogador1.id === id) {
       setBoardAdversario(resp.jogador2.board);
       setMyBoard(resp.jogador1.board);
+      setMyTurn(resp.jogador1.myturn);
     } else {
       setBoardAdversario(resp.jogador1.board);
       setMyBoard(resp.jogador2.board);
+      setMyTurn(resp.jogador2.myturn);
     }
+    if (!resp.jogador2.acertou) playMissSound();
+    else playHitSound();
+
     setPlacar(resp.jogador1.placar);
     setPlacarAdversario(resp.jogador2.placar);
     setEu(resp.jogador1.name);
     setAdversario(resp.jogador2.name);
   });
   socket.on("disconected", () => {
-    navigate("/loading", { state: { user } });
+    if (sair) navigate("/");
+    else navigate("/loading", { state: { user } });
   });
   useEffect(() => {
     setMyTurn(false);
   }, []);
-
+  const sairFunction = () => {
+    setSair(true);
+    socket.emit("exit", id);
+  };
   return (
     <DefaultPage text={`${eu} ${placar} x ${placarAdversario} ${adversario}`}>
       <DivStartGame>
@@ -82,6 +98,7 @@ const StartGame = ({ socket }: any) => {
                 room={room}
                 socket={socket}
                 id={id}
+                turn={myTurn}
               />
             </ContainerBattleField>
             <ContainerBattleField key={1}>
@@ -206,9 +223,9 @@ const StartGame = ({ socket }: any) => {
           </ContainerInfo>
         </DivWhite>
         <OtherContainer>
-          <Chat />
+          <Chat socket={socket} id={id} room={room} />
           <ButtonDefault
-            onClick={() => {}}
+            onClick={() => sairFunction()}
             text="Sair da partida"
             typeButton="primary"
           />

@@ -28,6 +28,7 @@ export const ChatBody = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: 5px;
+  overflow: auto;
 `;
 
 interface IPropsMessage {
@@ -48,9 +49,10 @@ export const Message = styled.div<IPropsMessage>`
   }
 `;
 
-export const FieldText = styled.div`
+export const FieldText = styled.form`
   width: 100%;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   textarea {
@@ -60,4 +62,11 @@ export const FieldText = styled.div`
     border-radius: 5px;
     padding: 5px 10px;
   }
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  height: 2rem;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
 `;
