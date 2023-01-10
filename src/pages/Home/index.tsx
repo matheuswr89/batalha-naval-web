@@ -7,10 +7,10 @@ const Home = ({ socket }: any) => {
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     const room = uuid();
     e.preventDefault();
-    const user: string = e.target.nickname.value;
-    if (user.trim().length > 0) {
-      socket.emit("join", { user, room });
-      navigate("/loading", { state: { user, room } });
+    const username: string = e.target.nickname.value;
+    if (username.trim().length > 0) {
+      socket.emit("join", { username, room });
+      navigate("/loading", { state: { username, room } });
     } else alert("Forneça um nickname");
   };
 

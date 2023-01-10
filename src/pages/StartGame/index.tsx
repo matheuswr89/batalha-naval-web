@@ -8,6 +8,7 @@ import BoardAdversary from "../../components/BoardAdversary";
 import ButtonDefault from "../../components/ButtonDefault";
 import Chat from "../../components/Chat";
 import DivWhite from "../../components/DivWhite";
+import MyModal from "../../components/MyModal/MyModal";
 import Square from "../../components/Square";
 import colors from "../../styles/colors";
 import { defaultBoard } from "../GenerateBoard";
@@ -32,7 +33,10 @@ import {
 const StartGame = ({ socket }: any) => {
   const navigate = useNavigate();
   const { state } = useLocation();
-  const { user, board, id, room } = state;
+  const { board, id, room } = state;
+  const [open, setOpen] = useState(false);
+  const [text, setText] = useState("");
+  const [title, setTitle] = useState("");
   const [adversario, setAdversario] = useState("");
   const [eu, setEu] = useState("");
   const [boardAdversario, setBoardAdversario] = useState(defaultBoard);
@@ -40,11 +44,10 @@ const StartGame = ({ socket }: any) => {
   const [placarAdversario, setPlacarAdversario] = useState(0);
   const [myBoard, setMyBoard] = useState(defaultBoard);
   const [myTurn, setMyTurn] = useState<boolean>(false);
-  const [sair, setSair] = useState(false);
   const [playHitSound] = useSound(hitSound);
   const [playMissSound] = useSound(missSound);
 
-  socket.on("get_board", (resp: any) => {
+  socket.off("get_board").on("get_board", (resp: any) => {
     if (resp.jogador1.id === id) {
       setMyTurn(resp.jogador1.myturn);
       setBoardAdversario(resp.jogador2.board);
@@ -58,17 +61,50 @@ const StartGame = ({ socket }: any) => {
     setAdversario(resp.jogador2.name);
     setMyBoard(board);
   });
-  socket.on("send_board", (resp: any) => {
+  socket.off("send_board").on("send_board", (resp: any) => {
+    console.log(resp);
+    let acertos,
+      cliques,
+      msgT = "Que pena, você perdeu!",
+      status = "perdeu";
     if (resp.jogador1.id === id) {
       setBoardAdversario(resp.jogador2.board);
       setMyBoard(resp.jogador1.board);
       setMyTurn(resp.jogador1.myturn);
+      if (resp.jogador2.ganhou !== -1) {
+        acertos = resp.jogador2.acertos;
+        cliques = resp.jogador2.cliques;
+        if (resp.jogador2.ganhou) {
+          msgT = "Parabéns, você ganhou!";
+          status = "ganhou";
+        }
+      }
     } else {
       setBoardAdversario(resp.jogador1.board);
       setMyBoard(resp.jogador2.board);
       setMyTurn(resp.jogador2.myturn);
+      if (resp.jogador1.ganhou !== -1) {
+        acertos = resp.jogador1.acertos;
+        cliques = resp.jogador1.cliques;
+        if (resp.jogador1.ganhou) {
+          msgT = "Parabéns, você ganhou!";
+          status = "ganhou";
+        }
+      }
     }
-    if (!resp.jogador2.acertou) playMissSound();
+    if (resp.jogador1.ganhou !== -1 && resp.jogador2.ganhou !== -1) {
+      const calculo = (acertos * 100) / cliques;
+      setOpen(true);
+      setTitle(msgT);
+      setText(
+        `Você ${status} com ${
+          !isNaN(calculo) ? calculo : 0
+        }% de taxa de acertos.\n\nTentativas: ${cliques}
+        \n\nAcertos: ${acertos}`
+      );
+    }
+
+    if (!resp.acertou) playMissSound();
     else playHitSound();
 
     setPlacar(resp.jogador1.placar);
@@ -76,19 +112,18 @@ const StartGame = ({ socket }: any) => {
     setEu(resp.jogador1.name);
     setAdversario(resp.jogador2.name);
   });
-  socket.on("disconected", () => {
-    if (sair) navigate("/");
-    else navigate("/loading", { state: { user } });
+  socket.off("disconected").on("disconected", () => {
+    navigate("/");
   });
   useEffect(() => {
     setMyTurn(false);
   }, []);
   const sairFunction = () => {
-    setSair(true);
     socket.emit("exit", id);
   };
   return (
     <DefaultPage text={`${eu} ${placar} x ${placarAdversario} ${adversario}`}>
+      <MyModal open={open} text={text} title={title} socket={socket} id={id} />
       <DivStartGame>
         <DivWhite>
           <ContainerAllFields>

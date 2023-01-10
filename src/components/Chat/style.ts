@@ -42,7 +42,8 @@ export const Message = styled.div<IPropsMessage>`
   border-radius: 10px;
   margin: 10px 5px;
   align-self: ${(props) => (props.myMessage ? "flex-end" : "flex-start")};
-
+  width: 130px;
+  word-break: break-all;
   span {
     font-size: 16px;
     color: ${colors.white};
@@ -69,4 +70,9 @@ export const Input = styled.input`
   height: 2rem;
   border-radius: 0.2rem;
   padding: 0.5rem;
+`;
+
+export const Button = styled.button`
+  background: transparent;
+  border: none;
 `;

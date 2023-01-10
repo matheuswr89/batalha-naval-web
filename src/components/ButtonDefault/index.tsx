@@ -5,14 +5,20 @@ interface IButtonProps {
   text: string;
   onClick: () => void;
   typeButton?: "primary" | "secondary";
+  size?: string;
 }
 
 const ButtonDefault: React.FC<IButtonProps> = ({
   text,
   onClick,
   typeButton = "primary",
+  size = "250px",
 }) => (
-  <Container primaryButton={typeButton === "primary"} onClick={onClick}>
+  <Container
+    size={size}
+    primaryButton={typeButton === "primary"}
+    onClick={onClick}
+  >
     {text}
   </Container>
 );

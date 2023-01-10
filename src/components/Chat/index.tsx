@@ -1,6 +1,13 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { MdSend } from "react-icons/md";
-import { ChatBody, ContainerChat, FieldText, Input, Message } from "./style";
+import {
+  Button,
+  ChatBody,
+  ContainerChat,
+  FieldText,
+  Input,
+  Message,
+} from "./style";
 
 interface IMessage {
   id: number;
@@ -26,7 +33,7 @@ const Chat = ({ socket, id, room }: any) => {
       passei++;
     }
   });
-  useEffect(() => {
+  useLayoutEffect(() => {
     const div: HTMLElement | null = document.getElementById("chat");
     if (div) div.scrollTop = div.scrollHeight;
   }, [messageChat]);
@@ -50,7 +57,9 @@ const Chat = ({ socket, id, room }: any) => {
       </ChatBody>
       <FieldText onSubmit={sendMsg}>
         <Input name="msg" placeholder="Escreva sua mensagem..." />
-        <MdSend size={35} className="hover-icon" />
+        <Button type="submit" className="input-icon">
+          <MdSend size={35} className="hover-icon" />
+        </Button>
       </FieldText>
     </ContainerChat>
   );

@@ -3,10 +3,11 @@ import colors from "../../styles/colors";
 
 interface IProps {
   primaryButton: boolean;
+  size: string;
 }
 
 export const Container = styled.button<IProps>`
-  width: 250px;
+  width: ${(props) => props.size};
   height: 50px;
   border-radius: 55px;
   background-color: ${(props) =>

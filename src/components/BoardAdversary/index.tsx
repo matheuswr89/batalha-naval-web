@@ -18,7 +18,7 @@ const BoardAdversary = ({ matriz, socket, room, id, turn }: BoardProps) => {
       <tbody>
         {matriz.map((col, i) => (
           <tr key={key++}>
-            <TD className={`number${i}`}>{i}</TD>
+            <TD className={`number${i}`}>{i + 1}</TD>
             {col.map((lin, j) => (
               <td key={key++}>
                 {i === 0 && <Text>{letters[j]}</Text>}

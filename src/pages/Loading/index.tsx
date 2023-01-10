@@ -7,19 +7,21 @@ const Loading = ({ socket }: any) => {
   const [roomDefault, setRoom] = useState("");
   const navigate = useNavigate();
   const { state } = useLocation();
-  const { user, id, board, message, room } = state;
+  const { username, id, board, message, room } = state;
 
-  socket.on("id_room", (resp: string) => {
+  socket.off("id_room").on("id_room", (resp: string) => {
     if (resp.includes("room:")) setRoom(resp.split("room: ")[1]);
   });
 
   socket.on("room_message", (resp: any) => {
-    navigate("/board", { state: { user, room: roomDefault, id: socket.id } });
+    navigate("/board", {
+      state: { username, room: roomDefault, id: socket.id },
+    });
   });
 
-  socket.on("send_board", (resp: any) => {
+  socket.off("send_board").on("send_board", (resp: any) => {
     if (resp.jogador1.board !== undefined && resp.jogador2.board !== undefined)
-      navigate("/game", { state: { user, board, id, room } });
+      navigate("/game", { state: { username, board, id, room } });
   });
 
   return (
