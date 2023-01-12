@@ -1,41 +1,161 @@
-# Getting Started with Create React App
+<!-- Improved compatibility of Voltar para o início link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<a id="readme-top"></a>
 
-## Available Scripts
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
-In the project directory, you can run:
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/matheuswr89/batalha-naval-web">
+    <h3 align="center">Batalha Naval Web
+  </a>
+</h3>
 
-### `npm start`
+  <p align="center">
+    Batalha Naval Web
+    <br />
+    <br />
+    <br />
+    <a href="https://github.com/matheuswr89/batalha-naval-web/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/matheuswr89/batalha-naval-web/issues">Request Feature</a>
+  </p>
+</div>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Sumário</summary>
+  <ol>
+    <li>
+      <a href="#sobre-o-projeto">Sobre o Projeto</a>
+      <ul>
+        <li><a href="#tecnologias-utilizadas">Tecnologias utilizadas</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#configuração">Configuração</a>
+      <ul>
+        <li><a href="#pré-requisitos">Pré-requisitos</a></li>
+        <li><a href="#instalação">Instalação</a></li>
+      </ul>
+    </li>
+    <li><a href="#uso">Uso</a></li>
+    <!-- <li><a href="#contact">Contato</a></li> -->
+  </ol>
+</details>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- ABOUT THE PROJECT -->
 
-### `npm run build`
+## Sobre o Projeto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Projeto desenvolvido como trabalho prático para a disciplina _SISTEMAS DISTRIBUIDOS_, do curso superior de _SISTEMAS PARA INTERNET_ do _IF SUDESTE MG - Campus Barbacena_, pelos alunos:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Lucas Rodrigues De Matos](https://github.com/LucasMtss)
+- [Mateus Do Nascimento Galdino](https://github.com/MateusGhaldino)
+- [Matheus William Ramos De Almeida](https://github.com/matheuswr89)
+- [Otávio Augusto Leite](https://github.com/OtavioAL)
+- [Samuel César De Macedo Siqueira](https://github.com/samuelcms)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+O objetivo do projeto é desenvolver um jogo de Batalha Naval com interface gráfica, onde duas pessoas poderão jogar via rede.
 
-### `npm run eject`
+<p align="right">(<a href="#readme-top">Voltar para o início</a>)</p>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Tecnologias utilizadas
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- [React](https://pt-br.reactjs.org/)
+- [NodeJS](https://nodejs.org/en/download/)
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<p align="right">(<a href="#readme-top">Voltar para o início</a>)</p>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- GETTING STARTED -->
 
-## Learn More
+## Configuração
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Pré-requisitos
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- [NodeJS](https://nodejs.org/en/download/)
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install)
+
+### Instalação
+
+1. Clone o respositório web
+   ```sh
+   git clone https://github.com/matheuswr89/batalha-naval-web.git
+   ```
+2. Baixe as dependencias com o comando
+
+   ```sh
+   yarn
+   ```
+
+   ou
+
+   ```sh
+   npm install
+   ```
+
+3. Clone o respositório contendo o servidor
+
+   ```sh
+   git clone https://github.com/LucasMtss/API-batalha-naval.git
+   ```
+
+4. Instale as bibliotecas com o comando
+   ```sh
+   pip install flask_pymongo bson flask flask_socketio requests
+   ```
+
+<p align="right">(<a href="#readme-top">Voltar para o início</a>)</p>
+
+<!-- USAGE -->
+
+## Uso
+
+Para iniciar a aplicação web:
+
+1. Execute um dos comandos abaixo
+
+   ```sh
+   npm start
+   ```
+
+   ou
+
+   ```sh
+   yarn start
+   ```
+
+2. Navegue até [http://localhost:3000](http://localhost:3000)
+
+Para iniciar o servidor:
+
+1. Primeiro o comando abaixo em um terminal
+
+   ```sh
+   py servidorSocket.py
+   ```
+
+2. Depois abra outro terminal e execute o comando abaixo
+
+   ```sh
+   py api.py
+   ```
+
+<p align="right">(<a href="#readme-top">Voltar para o início</a>)</p>
+
+[contributors-shield]: https://img.shields.io/github/contributors/matheuswr89/batalha-naval-web.svg?style=for-the-badge
+[contributors-url]: https://github.com/matheuswr89/batalha-naval-web/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/matheuswr89/batalha-naval-web.svg?style=for-the-badge
+[forks-url]: https://github.com/matheuswr89/batalha-naval-web/network/members
+[stars-shield]: https://img.shields.io/github/stars/matheuswr89/batalha-naval-web.svg?style=for-the-badge
+[stars-url]: https://github.com/matheuswr89/batalha-naval-web/stargazers
+[issues-shield]: https://img.shields.io/github/issues/matheuswr89/batalha-naval-web.svg?style=for-the-badge
+[issues-url]: https://github.com/matheuswr89/batalha-naval-web/issues
+[license-shield]: https://img.shields.io/github/license/matheuswr89/batalha-naval-web.svg?style=for-the-badge
+[license-url]: https://github.com/matheuswr89/batalha-naval-web/blob/master/LICENSE.txt
