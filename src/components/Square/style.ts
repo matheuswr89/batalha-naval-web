@@ -7,15 +7,15 @@ interface SquareProps {
 }
 
 export const SquareContainer = styled.div<SquareProps>`
-  width: 43.72px;
-  height: 43.72px;
+  width: 2.5vw;
+  height: 2.5vw;
   padding: 0 !important;
   display: flex;
   align-items: center;
   justify-content: center;
 
   span {
-    font-size: 30px;
+    font-size: 1.8vw;
     color: ${colors.white};
   }
 
@@ -31,22 +31,4 @@ export const SquareContainer = styled.div<SquareProps>`
     `};
 
   cursor: crosshair;
-
-  @media screen and (max-width: 1366px) {
-    width: 35px;
-    height: 35px;
-    span {
-      font-size: 30px;
-    }
-  }
-
-  @media screen and (max-width: 412px) {
-    width: 30px;
-    height: 30px;
-  }
-
-  @media screen and (max-width: 355px) {
-    width: 25px;
-    height: 25px;
-  }
 `;

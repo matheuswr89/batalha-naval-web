@@ -8,19 +8,9 @@ import BoardAdversary from "../../components/BoardAdversary";
 import ButtonDefault from "../../components/ButtonDefault";
 import Chat from "../../components/Chat";
 import DivWhite from "../../components/DivWhite";
+import Infos from "../../components/Infos";
 import MyModal from "../../components/MyModal/MyModal";
-import Square from "../../components/Square";
-import colors from "../../styles/colors";
 import { defaultBoard } from "../GenerateBoard";
-import {
-  DivInverse,
-  Flex,
-  OtherFlex,
-  OtherFlex1,
-  OtherFlexInverse,
-  Span,
-  Text,
-} from "../GenerateBoard/style";
 import DefaultPage from "../_DefaultPage";
 import {
   ContainerAllFields,
@@ -62,7 +52,6 @@ const StartGame = ({ socket }: any) => {
     setMyBoard(board);
   });
   socket.off("send_board").on("send_board", (resp: any) => {
-    console.log(resp);
     let acertos,
       cliques,
       msgT = "Que pena, você perdeu!",
@@ -97,10 +86,10 @@ const StartGame = ({ socket }: any) => {
       setOpen(true);
       setTitle(msgT);
       setText(
-        `Você ${status} com ${
+        `<p>Você ${status} com ${
           !isNaN(calculo) ? calculo : 0
-        }% de taxa de acertos.\n\nTentativas: ${cliques}
-        \n\nAcertos: ${acertos}`
+        }% de taxa de acertos.</p><br/><p>Tentativas: ${cliques}
+        </p><br/><p>Acertos: ${acertos}</p>`
       );
     }
 
@@ -145,116 +134,7 @@ const StartGame = ({ socket }: any) => {
             <span>{myTurn ? "SUA VEZ DE JOGAR" : "VEZ DO OPONENTE"}</span>
           </ContainerPlayerTurn>
           <ContainerInfo>
-            <div>
-              <Span>
-                <OtherFlex>
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="r"
-                  />
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="r"
-                  />
-                </OtherFlex>
-                <Text>2x rebocador</Text>
-              </Span>
-              <Span>
-                <OtherFlex>
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="s"
-                  />
-                </OtherFlex>
-                <Text>2x submarino</Text>
-              </Span>
-            </div>
-            <div>
-              <Span>
-                <Flex>
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="C"
-                  />
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="C"
-                  />
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="C"
-                  />
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="C"
-                  />
-                </Flex>
-                <Text>1x contratorpedeiro</Text>
-              </Span>
-              <Span>
-                <Flex>
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="z"
-                  />
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="z"
-                  />
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="z"
-                  />
-                </Flex>
-                <Text>1x cruzador</Text>
-              </Span>
-            </div>
-            <div>
-              <Span>
-                <DivInverse>
-                  <OtherFlex1>
-                    <Square
-                      backgroudColor={colors.default}
-                      margin="2px"
-                      letter="P"
-                    />
-                    <Square
-                      backgroudColor={colors.default}
-                      margin="2px"
-                      letter="P"
-                    />
-                    <Square
-                      backgroudColor={colors.default}
-                      margin="2px"
-                      letter="P"
-                    />
-                  </OtherFlex1>
-                  <OtherFlexInverse>
-                    <Square
-                      backgroudColor={colors.default}
-                      margin="2px"
-                      letter="P"
-                    />
-                    <Square
-                      backgroudColor={colors.default}
-                      margin="2px"
-                      letter="P"
-                    />
-                  </OtherFlexInverse>
-                </DivInverse>
-                <Text>1x porta-aviões</Text>
-              </Span>
-            </div>
+            <Infos type={true} />
           </ContainerInfo>
         </DivWhite>
         <OtherContainer>

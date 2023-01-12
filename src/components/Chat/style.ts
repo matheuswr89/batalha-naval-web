@@ -8,13 +8,11 @@ export const ContainerChat = styled.div`
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
-  max-width: 450px !important;
-  width: 100%;
-  height: 695px;
+  max-width: 280px !important;
+  width: 21vw;
+  max-height: 850px !important;
+  height: 55vh;
   border-radius: 10px;
-  @media screen and (max-width: 1366px) {
-    height: 450px;
-  }
   h1 {
     font-size: 48px;
   }
@@ -22,7 +20,7 @@ export const ContainerChat = styled.div`
 
 export const ChatBody = styled.div`
   width: 100%;
-  height: 540px;
+  height: 100%;
   border: 2px solid ${colors.default};
   padding: 10px;
   display: flex;
@@ -40,7 +38,7 @@ export const Message = styled.div<IPropsMessage>`
   background-color: ${(props) =>
     props.myMessage ? colors.darkBlue : colors.blue};
   border-radius: 10px;
-  margin: 10px 5px;
+  margin: 5px 5px;
   align-self: ${(props) => (props.myMessage ? "flex-end" : "flex-start")};
   width: 130px;
   word-break: break-all;

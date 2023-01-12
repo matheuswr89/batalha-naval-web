@@ -18,7 +18,6 @@ export default createGlobalStyle`
   body {
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
-    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     background-color: ${colors.darkBlue};
   }

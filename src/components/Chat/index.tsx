@@ -21,7 +21,6 @@ const Chat = ({ socket, id, room }: any) => {
   let passei = 0;
   socket.off("receiver-msg").on("receiver-msg", (res: any) => {
     if (passei < 1) {
-      console.log(res);
       setMessageChat((oldArray) => [
         ...oldArray,
         {

@@ -6,17 +6,11 @@ export const BoardTable = styled.table`
 
 export const TD = styled.td`
   font-weight: 400;
-  font-size: 26px;
+  font-size: 1.5vw;
   padding-right: 10px;
-  @media screen and (max-width: 450px) {
-    font-size: 16px;
-  }
 `;
 
 export const Text = styled.p`
   font-weight: 400;
-  font-size: 26px;
-  @media screen and (max-width: 450px) {
-    font-size: 16px;
-  }
+  font-size: 1.5vw;
 `;

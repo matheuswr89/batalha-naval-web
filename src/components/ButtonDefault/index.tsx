@@ -12,7 +12,7 @@ const ButtonDefault: React.FC<IButtonProps> = ({
   text,
   onClick,
   typeButton = "primary",
-  size = "250px",
+  size = "15vw",
 }) => (
   <Container
     size={size}

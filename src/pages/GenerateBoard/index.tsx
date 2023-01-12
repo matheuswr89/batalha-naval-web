@@ -3,19 +3,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Board from "../../components/Board";
 import ButtonDefault from "../../components/ButtonDefault";
 import DivWhite from "../../components/DivWhite";
-import Square from "../../components/Square";
-import colors from "../../styles/colors";
+import Infos from "../../components/Infos";
 import DefaultPage from "../_DefaultPage";
-import {
-  ContainerButtons,
-  Div,
-  DivInverse,
-  Flex,
-  FlexInverse,
-  Map,
-  Span,
-  Text,
-} from "./style";
+import { ContainerButtons, Div, Map } from "./style";
 
 export const defaultBoard = [
   ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
@@ -68,114 +58,7 @@ const GenerateBoard = ({ socket }: any) => {
         <Map>
           <Board matriz={board} />
           <Div>
-            <Span>
-              <DivInverse>
-                <Flex>
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="P"
-                  />
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="P"
-                  />
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="P"
-                  />
-                </Flex>
-                <FlexInverse>
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="P"
-                  />
-                  <Square
-                    backgroudColor={colors.default}
-                    margin="2px"
-                    letter="P"
-                  />
-                </FlexInverse>
-              </DivInverse>
-              <Text>1x porta-aviões</Text>
-            </Span>
-
-            <Span>
-              <Flex>
-                <Square
-                  backgroudColor={colors.default}
-                  margin="2px"
-                  letter="C"
-                />
-                <Square
-                  backgroudColor={colors.default}
-                  margin="2px"
-                  letter="C"
-                />
-                <Square
-                  backgroudColor={colors.default}
-                  margin="2px"
-                  letter="C"
-                />
-                <Square
-                  backgroudColor={colors.default}
-                  margin="2px"
-                  letter="C"
-                />
-              </Flex>
-              <Text>1x contratorpedeiro</Text>
-            </Span>
-
-            <Span>
-              <Flex>
-                <Square
-                  backgroudColor={colors.default}
-                  margin="2px"
-                  letter="z"
-                />
-                <Square
-                  backgroudColor={colors.default}
-                  margin="2px"
-                  letter="z"
-                />
-                <Square
-                  backgroudColor={colors.default}
-                  margin="2px"
-                  letter="z"
-                />
-              </Flex>
-              <Text>1x cruzador</Text>
-            </Span>
-
-            <Span>
-              <Flex>
-                <Square
-                  backgroudColor={colors.default}
-                  margin="2px"
-                  letter="r"
-                />
-                <Square
-                  backgroudColor={colors.default}
-                  margin="2px"
-                  letter="r"
-                />
-              </Flex>
-              <Text>2x rebocador</Text>
-            </Span>
-
-            <Span>
-              <Flex>
-                <Square
-                  backgroudColor={colors.default}
-                  margin="2px"
-                  letter="s"
-                />
-              </Flex>
-              <Text>2x submarino</Text>
-            </Span>
+            <Infos />
             <ContainerButtons>
               <ButtonDefault
                 onClick={() => getNewMap()}

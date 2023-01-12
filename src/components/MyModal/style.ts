@@ -12,14 +12,14 @@ export const Div = styled.div`
   position: absolute;
   display: grid;
   place-items: center;
-  margin-top: 88px;
+  margin-top: -65px;
 `;
 
 export const Modal = styled.div<ModalProps>`
   background-color: ${(props) => props.color};
   color: ${colors.black};
   width: 500px;
-  height: 10vw;
+  height: 15vw;
   display: grid;
   place-items: center;
 `;

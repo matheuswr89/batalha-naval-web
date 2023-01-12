@@ -17,18 +17,19 @@ export const DivStartGame = styled.div`
 `;
 
 export const ContainerBattleField = styled.div`
-  padding: 1.5vw;
+  padding: 0.5vw 1vw;
 `;
 
 export const ContainerInfo = styled.div`
-  width: 100%;
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
 `;
 
 export const ContainerPlayerTurn = styled.div<{ isPlayerTurn: boolean }>`
   display: flex;
-  margin-bottom: 1.5vw;
+  margin-bottom: 0.6vw;
+  margin-left: 1vw;
   align-items: center;
 
   .playerTurn {
@@ -40,7 +41,7 @@ export const ContainerPlayerTurn = styled.div<{ isPlayerTurn: boolean }>`
   }
 
   span {
-    margin-left: 10px;
+    margin-left: 1vw;
     font-size: 20px;
   }
 `;
@@ -51,7 +52,4 @@ export const OtherContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-left: 15px;
-  @media screen and (max-width: 894px) {
-    margin-left: 0;
-  }
 `;
