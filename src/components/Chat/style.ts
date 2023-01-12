@@ -10,8 +10,8 @@ export const ContainerChat = styled.div`
   padding: 10px;
   max-width: 280px !important;
   width: 21vw;
-  max-height: 850px !important;
-  height: 55vh;
+  height: 80vh;
+  max-height: 550px;
   border-radius: 10px;
   h1 {
     font-size: 48px;

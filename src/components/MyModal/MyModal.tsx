@@ -25,7 +25,7 @@ const MyModal = ({ open, text, title, socket, id }: any) => {
               text="Voltar para a tela inicial"
               onClick={() => socket.emit("exit", id)}
               typeButton="secondary"
-              size="320px"
+              size="360px"
             />
           </ModalContent>
         </Modal>

@@ -7,12 +7,12 @@ interface ModalProps {
 
 export const Div = styled.div`
   width: 100%;
-  height: 100%;
+  height: 101%;
   background-color: ${colors.shadow};
   position: absolute;
   display: grid;
   place-items: center;
-  margin-top: -65px;
+  margin-top: -80px;
 `;
 
 export const Modal = styled.div<ModalProps>`

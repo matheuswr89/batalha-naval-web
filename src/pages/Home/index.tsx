@@ -19,6 +19,7 @@ const Home = ({ socket }: any) => {
       <form onSubmit={handleSubmit}>
         <Text>Informe o seu nome</Text>
         <Input
+          autoFocus
           name="nickname"
           type="text"
           placeholder="Digite o seu nome...."

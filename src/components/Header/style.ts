@@ -5,7 +5,7 @@ export const Container = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #06283d;
   box-shadow: 3px 3px 10px ${colors.shadow};
 `;
@@ -16,7 +16,7 @@ export const ContainerTexts = styled.div`
   font-size: 20px;
   text-transform: uppercase;
   color: ${colors.white};
-  line-height: 50px;
+  line-height: 40px;
 `;
 
 export const Image = styled.img.attrs((props: any) => ({

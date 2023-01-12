@@ -37,10 +37,10 @@ const Infos = ({ type = false }: any) => {
             <DivFlexInverse>
               <FlexInverse>
                 <TransparentSquare>
-                  <span>0</span>
+                  <span>P</span>
                 </TransparentSquare>
                 <TransparentSquare>
-                  <span>0</span>
+                  <span>P</span>
                 </TransparentSquare>
               </FlexInverse>
               <FlexInverse>
@@ -57,10 +57,10 @@ const Infos = ({ type = false }: any) => {
               </FlexInverse>
               <FlexInverse>
                 <TransparentSquare>
-                  <span>0</span>
+                  <span>P</span>
                 </TransparentSquare>
                 <TransparentSquare>
-                  <span>0</span>
+                  <span>P</span>
                 </TransparentSquare>
               </FlexInverse>
             </DivFlexInverse>
@@ -204,10 +204,10 @@ const Infos = ({ type = false }: any) => {
             <DivFlexInverse>
               <FlexInverse>
                 <TransparentSquare>
-                  <span>0</span>
+                  <span>P</span>
                 </TransparentSquare>
                 <TransparentSquare>
-                  <span>0</span>
+                  <span>P</span>
                 </TransparentSquare>
               </FlexInverse>
               <FlexInverse>
@@ -224,10 +224,10 @@ const Infos = ({ type = false }: any) => {
               </FlexInverse>
               <FlexInverse>
                 <TransparentSquare>
-                  <span>0</span>
+                  <span>P</span>
                 </TransparentSquare>
                 <TransparentSquare>
-                  <span>0</span>
+                  <span>P</span>
                 </TransparentSquare>
               </FlexInverse>
             </DivFlexInverse>
