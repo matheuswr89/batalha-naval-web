@@ -99,7 +99,7 @@ const Infos = ({ type = false }: any) => {
           <Flex size="12vw">
             <Square backgroudColor={colors.default} margin=".1vw" letter="s" />
           </Flex>
-          <Text>2x submarino</Text>
+          <Text>3x submarino</Text>
         </Span>
       </>
     )) ||
@@ -130,7 +130,7 @@ const Infos = ({ type = false }: any) => {
                 letter="s"
               />
             </OtherFlex>
-            <Text>2x submarino</Text>
+            <Text>3x submarino</Text>
           </Span>
         </div>
         <div>
