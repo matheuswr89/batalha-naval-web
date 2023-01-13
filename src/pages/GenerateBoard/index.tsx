@@ -50,7 +50,7 @@ const GenerateBoard = ({ socket }: any) => {
   };
 
   socket.off("disconected").on("disconected", () => {
-    navigate("/loading", { state: { username } });
+    navigate("/");
   });
   return (
     <DefaultPage>

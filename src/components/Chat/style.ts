@@ -41,7 +41,7 @@ export const Message = styled.div<IPropsMessage>`
   margin: 5px 5px;
   align-self: ${(props) => (props.myMessage ? "flex-end" : "flex-start")};
   width: 130px;
-  word-break: break-all;
+  overflow-wrap: break-word;
   span {
     font-size: 16px;
     color: ${colors.white};

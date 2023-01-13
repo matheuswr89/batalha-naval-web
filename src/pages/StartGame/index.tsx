@@ -87,7 +87,7 @@ const StartGame = ({ socket }: any) => {
       setTitle(msgT);
       setText(
         `<p>Você ${status} com ${
-          !isNaN(calculo) ? calculo : 0
+          !isNaN(calculo) ? calculo.toFixed(2) : 0
         }% de taxa de acertos.</p><br/><p>Tentativas: ${cliques}
         </p><br/><p>Acertos: ${acertos}</p>`
       );

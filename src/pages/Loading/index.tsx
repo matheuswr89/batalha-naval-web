@@ -14,14 +14,12 @@ const Loading = ({ socket }: any) => {
   });
 
   socket.on("room_message", (resp: any) => {
-    console.log(id);
     navigate("/board", {
       state: { username, room: roomDefault, id: socket.id },
     });
   });
 
   socket.off("send_board").on("send_board", (resp: any) => {
-    console.log(id);
     if (resp.jogador1.board !== undefined && resp.jogador2.board !== undefined)
       navigate("/game", { state: { username, board, id, room } });
   });
