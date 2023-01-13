@@ -108,7 +108,7 @@ O objetivo do projeto é desenvolver um jogo de Batalha Naval com interface grá
 
 4. Instale as bibliotecas com o comando
    ```sh
-   pip install flask_pymongo bson flask flask_socketio requests
+   pip install Flask-PyMongo bson flask flask-socketio requests Flask-Cors
    ```
 
 <p align="right">(<a href="#readme-top">Voltar para o início</a>)</p>
