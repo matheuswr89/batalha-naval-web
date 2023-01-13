@@ -20,6 +20,7 @@ const Loading = ({ socket }: any) => {
   });
 
   socket.off("send_board").on("send_board", (resp: any) => {
+    console.log(id);
     if (resp.jogador1.board !== undefined && resp.jogador2.board !== undefined)
       navigate("/game", { state: { username, board, id, room } });
   });
