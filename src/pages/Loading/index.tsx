@@ -14,6 +14,7 @@ const Loading = ({ socket }: any) => {
   });
 
   socket.on("room_message", (resp: any) => {
+    console.log(id);
     navigate("/board", {
       state: { username, room: roomDefault, id: socket.id },
     });
