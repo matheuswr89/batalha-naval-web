@@ -6,7 +6,7 @@ import Loading from "../pages/Loading";
 import StartGame from "../pages/StartGame";
 
 const AppRoute = () => {
-  const socket = io("https://batalha-naval.herokuapp.com/");
+  const socket = io("https://batalha-naval-65b41af002f7.herokuapp.com/");
 
   return (
     <BrowserRouter>
